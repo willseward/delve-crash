@@ -6,14 +6,18 @@ services:
     cap_add:
       - SYS_PTRACE
       - SYS_ADMIN
+    privileged: true
   debugger:
     build:
       context: "./delve"
     cap_add:
       - SYS_PTRACE
       - SYS_ADMIN
+    privileged: true
     depends_on:
       - app
     ports:
       - "2345:2345"
     pid: "container:delvecrash_app_1"
+    volumes:
+      - "./:/app"
