@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  app:
+    build:
+      context: "./app"
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+  debugger:
+    build:
+      context: "./delve"
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    depends_on:
+      - app
+    ports:
+      - "2345:2345"
+    pid: "container:delvecrash_app_1"
