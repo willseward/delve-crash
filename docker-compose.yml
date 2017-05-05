@@ -18,4 +18,4 @@ services:
       - "2345:2345"
     pid: "container:delvecrash_app_1"
     volumes:
-      - "./app:/app"
+      - "./app:/go/src/myapp"
